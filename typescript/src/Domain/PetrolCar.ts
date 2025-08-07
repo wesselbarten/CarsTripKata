@@ -19,29 +19,8 @@ export class PetrolCar implements IPetrolCarEntity{
         this.fuelAvailable = 0;
     }
 
-    public refillGasoline(liters: number): void {
-        this.fuelAvailable += liters;
-        if (this.fuelAvailable > this.tankCapacity) {
-            this.fuelAvailable = this.tankCapacity;
-        }
-    }
-
-    public travel(distance: number) {
-        const tripFuelConsumption = this.calculateTripFuelConsumption(distance);
-        this.fuelAvailable -= tripFuelConsumption;
-        this.totalMileage += distance;
-    }
-
     public id(): UUID {
         return this._id;
-    }
-
-    public mileage(): number {
-        return this.totalMileage;
-    }
-
-    public fuelAmount():number {
-        return this.fuelAvailable;
     }
 
     public name(): string {
@@ -50,6 +29,27 @@ export class PetrolCar implements IPetrolCarEntity{
 
     public data(): string {
         return `${this.name()}\nTotal Mileage: ${this.mileage()} Km\nFuel Available: ${this.fuelAmount()} l`;
+    }
+
+    public travel(distance: number) {
+        const tripFuelConsumption = this.calculateTripFuelConsumption(distance);
+        this.fuelAvailable -= tripFuelConsumption;
+        this.totalMileage += distance;
+    }
+
+    public refillGasoline(liters: number): void {
+        this.fuelAvailable += liters;
+        if (this.fuelAvailable > this.tankCapacity) {
+            this.fuelAvailable = this.tankCapacity;
+        }
+    }
+
+    public mileage(): number {
+        return this.totalMileage;
+    }
+
+    public fuelAmount(): number {
+        return this.fuelAvailable;
     }
 
     private calculateTripFuelConsumption(distance: number) {
