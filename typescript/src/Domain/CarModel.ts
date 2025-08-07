@@ -9,3 +9,8 @@ export interface PetrolCarModel extends CarModel {
     fuelConsumption: number;
     tankCapacity: number;
 }
+
+export interface ElectricCarModel extends CarModel {
+    energyConsumption: number;
+    batteryCapacity: number;
+}

@@ -6,7 +6,6 @@ import { Car } from "./Car";
 export class PetrolCar extends Car implements IPetrolCarEntity{
     private readonly fuelConsumption:number; // unit is l/100 km
     private readonly tankCapacity: number;
-    private totalMileage: number = 0;
     private fuelAvailable: number;
 
     constructor(public modelInfo: PetrolCarModel) {
@@ -14,6 +13,17 @@ export class PetrolCar extends Car implements IPetrolCarEntity{
         this.fuelConsumption = modelInfo.fuelConsumption;
         this.tankCapacity = modelInfo.tankCapacity;
         this.fuelAvailable = 0;
+    }
+
+    public refillGasoline(liters: number): void {
+        this.fuelAvailable += liters;
+        if (this.fuelAvailable > this.tankCapacity) {
+            this.fuelAvailable = this.tankCapacity;
+        }
+    }
+
+    public fuelAmount(): number {
+        return this.fuelAvailable;
     }
 
     public data(): string {
@@ -24,22 +34,7 @@ export class PetrolCar extends Car implements IPetrolCarEntity{
         const tripFuelConsumption = this.calculateTripFuelConsumption(distance);
         this.fuelAvailable -= tripFuelConsumption;
         this.totalMileage += distance;
-    }
-
-    public refillGasoline(liters: number): void {
-        this.fuelAvailable += liters;
-        if (this.fuelAvailable > this.tankCapacity) {
-            this.fuelAvailable = this.tankCapacity;
-        }
-    }
-
-    public mileage(): number {
-        return this.totalMileage;
-    }
-
-    public fuelAmount(): number {
-        return this.fuelAvailable;
-    }
+    }    
 
     private calculateTripFuelConsumption(distance: number) {
         //consumption unit is l/100 km
