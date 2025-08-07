@@ -1,5 +1,3 @@
-import { CarModel, PetrolCarModel } from "../CarModel";
-
 export const AvailableVehicles = {
     Toyota: {
         Corolla: { brand: "Toyota", model: "Corolla", fuelConsumption:5, tankCapacity:30 },

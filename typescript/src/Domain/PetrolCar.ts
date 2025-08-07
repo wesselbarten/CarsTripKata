@@ -1,5 +1,4 @@
-import {randomUUID, UUID} from "node:crypto";
-import {CarModel, PetrolCarModel} from "./CarModel";
+import {PetrolCarModel} from "./CarModel";
 import { IPetrolCarEntity } from "./IPetrolCarEntity";
 import { Car } from "./Car";
 

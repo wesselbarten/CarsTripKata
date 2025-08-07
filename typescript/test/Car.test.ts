@@ -1,4 +1,4 @@
-import { ElectricCar } from "../src/Domain/ElectricCar";
+import {ElectricCar} from "../src/Domain/ElectricCar";
 import {PetrolCar} from "../src/Domain/PetrolCar";
 import {AvailableVehicles} from "../src/Domain/Primitives/AvailableVehicles";
 
@@ -45,7 +45,7 @@ describe('Petrol car', () => {
         expect(car.mileage()).toBe(100);
     });
 
-    it('should be able to travel using the fuel', () => {
+    it('should be able to travel again using the fuel', () => {
         const car = new PetrolCar(AvailableVehicles.Toyota.Camry);
         car.refillGasoline(14);
         car.travel(50);
@@ -107,7 +107,7 @@ describe('Electric car', () => {
         expect(mileage).toBe(80);
     });
 
-    it(`should be able to travel using electricity`, () => {
+    it(`should be able to travel again using electricity`, () => {
         const car = new ElectricCar(AvailableVehicles.Tesla.ModelX);
         car.charge(100);
         car.travel(240);
