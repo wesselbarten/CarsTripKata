@@ -106,4 +106,13 @@ describe('Electric car', () => {
         const mileage = car.mileage();
         expect(mileage).toBe(80);
     });
+
+    it(`should be able to travel using electricity`, () => {
+        const car = new ElectricCar(AvailableVehicles.Tesla.ModelX);
+        car.charge(100);
+        car.travel(240);
+        const currentCharge = car.currentCharge();
+        expect(currentCharge).toBe(50.08);
+        expect(car.data()).toContain("Battery Charge Available: 50.08 kWh");
+    });
 });
