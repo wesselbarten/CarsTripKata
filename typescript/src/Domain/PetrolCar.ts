@@ -1,5 +1,5 @@
 import {randomUUID, UUID} from "node:crypto";
-import {CarModel} from "./CarModel";
+import {CarModel, PetrolCarModel} from "./CarModel";
 import { IPetrolCarEntity } from "./IPetrolCarEntity";
 
 export class PetrolCar implements IPetrolCarEntity{
@@ -11,7 +11,7 @@ export class PetrolCar implements IPetrolCarEntity{
     private totalMileage: number = 0;
     private fuelAvailable: number;
 
-    constructor(public modelInfo: CarModel) {
+    constructor(public modelInfo: PetrolCarModel) {
         this.brand = modelInfo.brand;
         this.model = modelInfo.model;
         this.fuelConsumption = modelInfo.fuelConsumption;
