@@ -12,3 +12,11 @@
 3. **Modified Behavior**:
    - `travel()` should use electric energy calculations
    - `data()` should show charge level instead of fuel
+
+# Approach
+- Rename Car to PetrolCar
+- Extract separate IPetrolCarEntity interface from ICarEntity
+- Introduce IElectricCarEntity interface that extends ICarEntity
+- Combine fuelConsumption and tankCapacity into a separate class TBD
+    - Extract base interface from this class
+    - Introduce class for `batteryCapacity` and `energyConsumption`.
