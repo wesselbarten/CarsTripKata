@@ -82,4 +82,11 @@ describe('Electric car', () => {
         const currentCharge = car.currentCharge();
         expect(currentCharge).toBe(70);
     });
+
+    it(`should be charged with not more than the battery capacity`, () => {
+        const car = new ElectricCar(AvailableVehicles.Tesla.ModelS);
+        car.charge(150);
+        const currentCharge = car.currentCharge();
+        expect(currentCharge).toBe(100);
+    });
 });

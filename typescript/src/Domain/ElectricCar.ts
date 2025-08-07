@@ -4,18 +4,23 @@ import { IElectricCarEntity } from "./IElectricCarEntity";
 
 export class ElectricCar extends Car implements IElectricCarEntity {
 
-    private _currentCharge: number = 0;
+    private readonly batteryCapacity: number;
+    private chargeAvailable: number = 0;
 
     constructor(public modelInfo: ElectricCarModel) {
         super(modelInfo);
+        this.batteryCapacity = modelInfo.batteryCapacity;
     }
 
     public charge(kWh: number): void {
-        this._currentCharge += kWh;
+        this.chargeAvailable += kWh;
+        if (this.chargeAvailable > this.batteryCapacity) {
+            this.chargeAvailable = this.batteryCapacity;
+        }
     }
 
     public currentCharge(): number {
-        return this._currentCharge;
+        return this.chargeAvailable;
     }
 
     public data(): string {
