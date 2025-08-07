@@ -4,11 +4,13 @@ import { IElectricCarEntity } from "./IElectricCarEntity";
 
 export class ElectricCar extends Car implements IElectricCarEntity {
 
+    private readonly energyConsumption: number;
     private readonly batteryCapacity: number;
     private chargeAvailable: number = 0;
 
     constructor(public modelInfo: ElectricCarModel) {
         super(modelInfo);
+        this.energyConsumption = modelInfo.energyConsumption;
         this.batteryCapacity = modelInfo.batteryCapacity;
     }
 
@@ -28,6 +30,11 @@ export class ElectricCar extends Car implements IElectricCarEntity {
     }
 
     public travel(distance: number): void {
-        
+        const tripEnergyConsumption = this.calculateTripEnergyConsumption(distance);
+        this.chargeAvailable -= tripEnergyConsumption;
+    }
+
+    private calculateTripEnergyConsumption(distance: number): number {
+        return this.energyConsumption * (distance / 100);
     }
 }

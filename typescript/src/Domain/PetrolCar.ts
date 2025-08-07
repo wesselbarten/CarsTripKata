@@ -34,10 +34,10 @@ export class PetrolCar extends Car implements IPetrolCarEntity{
         const tripFuelConsumption = this.calculateTripFuelConsumption(distance);
         this.fuelAvailable -= tripFuelConsumption;
         this.totalMileage += distance;
-    }    
+    }
 
     private calculateTripFuelConsumption(distance: number) {
         //consumption unit is l/100 km
-        return this.fuelConsumption * distance / 100;
+        return this.fuelConsumption * (distance / 100);
     }
 }
