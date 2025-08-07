@@ -11,7 +11,7 @@ export class ElectricCar extends Car implements IElectricCarEntity {
     }
 
     public charge(kWh: number): void {
-        
+        this._currentCharge += kWh;
     }
 
     public currentCharge(): number {

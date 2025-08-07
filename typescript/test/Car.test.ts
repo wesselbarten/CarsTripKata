@@ -67,4 +67,12 @@ describe('Electric car', () => {
         expect(car.data()).toContain("Total Mileage: 0 Km");
         expect(car.data()).toContain("Battery Charge Available: 0 kWh");
     });
+
+    it(`should be filled with electricity`, () => {
+        const car = new ElectricCar(AvailableVehicles.Tesla.ModelS);
+        const energy = 50;
+        car.charge(energy)
+        const currentCharge = car.currentCharge();
+        expect(currentCharge).toBe(energy);
+    });
 });
