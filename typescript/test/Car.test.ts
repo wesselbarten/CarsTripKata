@@ -1,7 +1,8 @@
+import { ElectricCar } from "../src/Domain/ElectricCar";
 import {PetrolCar} from "../src/Domain/PetrolCar";
 import {AvailableVehicles} from "../src/Domain/Primitives/AvailableVehicles";
 
-describe('Car', () => {
+describe('Petrol car', () => {
     it('should be instantiated with zero mileage', () => {
         const car = new PetrolCar(AvailableVehicles.Toyota.Corolla);
         const mileage = car.mileage();
@@ -51,5 +52,19 @@ describe('Car', () => {
         const amountOfFuelAvailable = car.fuelAmount();
         expect(amountOfFuelAvailable).toBe(10.5);
         expect(car.data()).toContain("Fuel Available: 10.5 l");
+    });
+});
+
+describe('Electric car', () => {
+    it('should be instantiated with zero mileage', () => {
+        const car = new ElectricCar(AvailableVehicles.Tesla.ModelX);
+        const mileage = car.mileage();
+        const currentCharge = car.currentCharge();
+        expect(mileage).toBe(0);
+        expect(currentCharge).toBe(0);
+        expect(car.name()).toContain("Tesla");
+        expect(car.name()).toContain("Model X");
+        expect(car.data()).toContain("Total Mileage: 0 Km");
+        expect(car.data()).toContain("Battery Charge Available: 0 kWh");
     });
 });

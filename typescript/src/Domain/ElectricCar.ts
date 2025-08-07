@@ -10,19 +10,19 @@ export class ElectricCar extends Car implements IElectricCarEntity {
         super(modelInfo);
     }
 
-    charge(kWh: number): void {
+    public charge(kWh: number): void {
         
     }
 
-    currentCharge(): number {
+    public currentCharge(): number {
         return this._currentCharge;
     }
 
-    data(): string {
-        return "";
+    public data(): string {
+        return `${this.name()}\nTotal Mileage: ${this.mileage()} Km\nBattery Charge Available: ${this.currentCharge()} kWh`;
     }
 
-    travel(distance: number): void {
+    public travel(distance: number): void {
         
     }
 }
