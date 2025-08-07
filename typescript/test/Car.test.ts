@@ -68,11 +68,18 @@ describe('Electric car', () => {
         expect(car.data()).toContain("Battery Charge Available: 0 kWh");
     });
 
-    it(`should be filled with electricity`, () => {
+    it(`should be charged with electricity`, () => {
         const car = new ElectricCar(AvailableVehicles.Tesla.ModelS);
-        const energy = 50;
-        car.charge(energy)
+        car.charge(50);
         const currentCharge = car.currentCharge();
-        expect(currentCharge).toBe(energy);
+        expect(currentCharge).toBe(50);
+    });
+
+    it(`should combine multiple electricity charges`, () => {
+        const car = new ElectricCar(AvailableVehicles.Tesla.ModelS);
+        car.charge(50);
+        car.charge(20);
+        const currentCharge = car.currentCharge();
+        expect(currentCharge).toBe(70);
     });
 });
