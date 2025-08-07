@@ -32,6 +32,7 @@ export class ElectricCar extends Car implements IElectricCarEntity {
     public travel(distance: number): void {
         const tripEnergyConsumption = this.calculateTripEnergyConsumption(distance);
         this.chargeAvailable -= tripEnergyConsumption;
+        this.totalMileage += distance;
     }
 
     private calculateTripEnergyConsumption(distance: number): number {

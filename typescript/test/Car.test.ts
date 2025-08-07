@@ -98,4 +98,12 @@ describe('Electric car', () => {
         expect(currentCharge).toBe(79.2);
         expect(car.data()).toContain("Battery Charge Available: 79.2 kWh");
     });
+
+    it('should add up mileage after every trip', () => {
+        const car = new ElectricCar(AvailableVehicles.Tesla.ModelX);
+        car.charge(100);
+        car.travel(80);
+        const mileage = car.mileage();
+        expect(mileage).toBe(80);
+    });
 });
