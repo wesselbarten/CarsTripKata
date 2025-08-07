@@ -1,30 +1,19 @@
 import {randomUUID, UUID} from "node:crypto";
 import {CarModel, PetrolCarModel} from "./CarModel";
 import { IPetrolCarEntity } from "./IPetrolCarEntity";
+import { Car } from "./Car";
 
-export class PetrolCar implements IPetrolCarEntity{
-    private readonly _id:UUID = randomUUID();
-    private readonly brand: string;
-    private readonly model: string;
+export class PetrolCar extends Car implements IPetrolCarEntity{
     private readonly fuelConsumption:number; // unit is l/100 km
     private readonly tankCapacity: number;
     private totalMileage: number = 0;
     private fuelAvailable: number;
 
     constructor(public modelInfo: PetrolCarModel) {
-        this.brand = modelInfo.brand;
-        this.model = modelInfo.model;
+        super(modelInfo);
         this.fuelConsumption = modelInfo.fuelConsumption;
         this.tankCapacity = modelInfo.tankCapacity;
         this.fuelAvailable = 0;
-    }
-
-    public id(): UUID {
-        return this._id;
-    }
-
-    public name(): string {
-        return `${this.brand} ${this.model} ${this.id()}`;
     }
 
     public data(): string {
