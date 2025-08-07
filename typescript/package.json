@@ -3,13 +3,10 @@
   "version": "1.0.0",
   "main": "index.js",
   "scripts": {
-    "build": "tsc",
-    "start": "node dist/index.js",
-    "dev": "nodemon src/infrastructure/MarsRoverController.ts",
     "test": "jest"
   },
   "keywords": [],
-  "author": "",
+  "author": "Wessel",
   "license": "ISC",
   "description": "",
   "devDependencies": {
